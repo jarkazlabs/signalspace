@@ -71,6 +71,10 @@ export function PatternCardContent({ card }) {
 
   return (
     <div className="flex flex-col gap-2.5">
+      {card.title && (
+        <p className="font-sans font-semibold text-sm text-ss-ink leading-snug">{card.title}</p>
+      )}
+
       {/* Meta-Zeile */}
       {(card.bpm || card.scale) && (
         <div className="flex items-center gap-3">

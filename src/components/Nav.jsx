@@ -1,4 +1,4 @@
-// Nav.jsx — staticfield Nav: Logo · Explore · Fields · Manifesto · Your fields
+// Nav.jsx — staticfield Nav: Logo · Fields · Manifesto · Your fields
 import { useEffect, useState } from 'react'
 import Logo from './Logo.jsx'
 
@@ -15,7 +15,6 @@ export default function Nav({ page, setPage }) {
   function navigate(id) { setPage(id); setMenuOpen(false) }
 
   const links = [
-    { id: 'explore',   label: 'Explore'   },
     { id: 'fields',    label: 'Fields'    },
     { id: 'manifesto', label: 'Manifesto' },
   ]

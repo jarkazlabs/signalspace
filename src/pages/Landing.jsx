@@ -1,8 +1,6 @@
 // Landing.jsx — staticfield homepage
 // ONLY this file changes. Nothing else.
 
-import { useState } from 'react'
-
 function ConnectedField() {
   return (
     <div className="relative mx-auto w-full max-w-[760px] select-none lg:h-[620px] h-[520px]">
@@ -118,69 +116,29 @@ function ConnectedField() {
 const FEATURES = [
   {
     icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4"/><rect x="11" y="2" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4"/><rect x="2" y="11" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4"/><rect x="11" y="11" width="7" height="7" rx="1.5" stroke="currentColor" strokeWidth="1.4"/></svg>,
-    title: 'Collect anything',
-    desc: 'Save images,\nlinks, notes and more.',
+    title: 'Capture signals',
+    desc: 'Hold thoughts,\nlinks and images.',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="4" cy="10" r="2.5" stroke="currentColor" strokeWidth="1.4"/><circle cx="16" cy="4" r="2.5" stroke="currentColor" strokeWidth="1.4"/><circle cx="16" cy="16" r="2.5" stroke="currentColor" strokeWidth="1.4"/><line x1="6.5" y1="9" x2="13.5" y2="5.5" stroke="currentColor" strokeWidth="1.4"/><line x1="6.5" y1="11" x2="13.5" y2="14.5" stroke="currentColor" strokeWidth="1.4"/></svg>,
     title: 'Connect ideas',
-    desc: 'Visually connect signals\nand spark new ideas.',
+    desc: 'Patch thoughts together\ninside the same field.',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10 L5 6 L8 12 L11 4 L14 14 L17 8 L19 10" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" fill="none"/></svg>,
     title: 'Shape your field',
-    desc: 'Build chains,\ncollect references.',
+    desc: 'Let a creative space\ngrow around the idea.',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" strokeWidth="1.4"/><line x1="14" y1="14" x2="18" y2="18" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>,
-    title: 'Search your space',
-    desc: 'Find what you need\nby content and vibe.',
+    title: 'Find the thread',
+    desc: 'Return to what mattered\nwhen the idea returns.',
   },
   {
     icon: <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="1.4"/><circle cx="10" cy="10" r="3" stroke="currentColor" strokeWidth="1.4"/><line x1="10" y1="2" x2="10" y2="6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/><line x1="10" y1="14" x2="10" y2="18" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/></svg>,
-    title: 'Return and evolve',
-    desc: 'Your fields grow with you.\nNothing is ever final.',
+    title: 'Remember gently',
+    desc: 'Unfinished thoughts\nstay alive over time.',
   },
-]
-
-const EARLY_STORIES = [
-  {
-    quote: 'Staticfield became the place where unfinished sounds could stay alive. I collect patch notes, images and references without forcing them into a project too early.',
-    name: 'Mara V.',
-    role: 'Ambient artist',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&q=70&fit=crop&crop=faces',
-  },
-  {
-    quote: 'I use it between modular sessions. A cable idea, a YouTube reference, a small text note - they can sit together until the next patch starts making sense.',
-    name: 'Jonas K.',
-    role: 'Modular musician',
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&q=70&fit=crop&crop=faces',
-  },
-  {
-    quote: 'It feels less like managing files and more like returning to a room of clues. The connections help me remember why something mattered in the first place.',
-    name: 'Lea R.',
-    role: 'Sound collector',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=160&q=70&fit=crop&crop=faces',
-  },
-]
-
-// ─── REAL FIELDS DATA ─────────────────────────────────────
-
-const FILTER_TAGS = ['All','Ambient','Modular','References','Sound Design','Textures','Research']
-
-const REAL_FIELDS = [
-  { id: 1, title: 'Distant Memories',        creator: 'Alex R.',    category: 'Ambient',
-    img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&q=70' },
-  { id: 2, title: 'Granular Experiments',     creator: 'Mira K.',    category: 'Sound Design',
-    img: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=500&q=70' },
-  { id: 3, title: 'Modular Ideas',            creator: 'Jonas T.',   category: 'Modular',
-    img: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=500&q=70' },
-  { id: 4, title: 'Forest Sessions',          creator: 'Lea S.',     category: 'References',
-    img: 'https://images.unsplash.com/photo-1448375240586-882707db888b?w=500&q=70' },
-  { id: 5, title: 'Tape Texture Studies',     creator: 'Omar F.',    category: 'Textures',
-    img: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=70' },
-  { id: 6, title: 'Signal Research Notes',    creator: 'Nina V.',    category: 'Research',
-    img: 'https://images.unsplash.com/photo-1477601263568-180e2c6d046e?w=500&q=70' },
 ]
 
 // ─── APP PREVIEW — Living Mini Field ─────────────────────
@@ -238,10 +196,6 @@ function AppPreview() {
 // ─── MAIN LANDING ─────────────────────────────────────────
 
 export default function Landing({ setPage, openField }) {
-  const [activeTag, setActiveTag] = useState('All')
-
-  const filtered = REAL_FIELDS.filter(f => activeTag === 'All' || f.category === activeTag)
-
   return (
     <div className="min-h-screen bg-ss-bg">
 
@@ -271,8 +225,8 @@ export default function Landing({ setPage, openField }) {
 
               <p className="text-base sm:text-lg text-[#6f5842] leading-relaxed mb-8 max-w-md animate-slide-up"
                 style={{ animationFillMode: 'forwards', animationDelay: '0.1s' }}>
-                Collect sounds, patches, links and references.<br/>
-                Connect them. Develop ideas over time.<br/>
+                A creative memory for people working with sound.<br/>
+                Capture what feels interesting. Return when it starts to matter.<br/>
                 <span className="block mt-3">For modular musicians, ambient artists and <span className="whitespace-nowrap">curious collectors.</span></span>
               </p>
 
@@ -284,7 +238,7 @@ export default function Landing({ setPage, openField }) {
                 </button>
                 <button onClick={() => openField('b01')}
                   className="text-sm text-ss-dim hover:text-ss-ink transition-colors underline underline-offset-4 decoration-ss-border">
-                  Explore demo field
+                  Open demo field
                 </button>
               </div>
             </div>
@@ -312,89 +266,6 @@ export default function Landing({ setPage, openField }) {
             ))}
           </div>
 
-          <div className="mt-14 sm:mt-16 max-w-2xl">
-            <h2 className="font-sans font-bold text-3xl sm:text-[48px] text-ss-ink leading-[1.05]">
-              What people are shaping<br/>inside Staticfield.
-            </h2>
-          </div>
-
-          <div className="mt-10 sm:mt-12 grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
-            {EARLY_STORIES.map(story => (
-              <article
-                key={story.name}
-                className="flex min-h-[300px] flex-col rounded-xl border border-ss-border bg-white/15 px-6 py-6 sm:px-7 sm:py-7"
-              >
-                <div>
-                  <p className="text-base text-ss-ink leading-relaxed">
-                    "{story.quote}"
-                  </p>
-                </div>
-                <div className="mt-auto flex items-center gap-3.5 pt-8">
-                  <img
-                    src={story.avatar}
-                    alt=""
-                    className="h-12 w-12 rounded-full border border-ss-border object-cover"
-                  />
-                  <div>
-                    <p className="text-sm font-semibold text-ss-ink">{story.name}</p>
-                    <p className="text-xs text-ss-dim">{story.role}</p>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════ REAL FIELDS ══════════ */}
-      <section className="py-12 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-8">
-            <div>
-              <h2 className="font-sans font-bold text-4xl sm:text-5xl text-ss-ink leading-tight mb-2">
-                See how others<br/>build their worlds.
-              </h2>
-              <p className="text-sm text-ss-dim">
-                Explore fields from sound artists,<br/>researchers and creators.
-              </p>
-            </div>
-            {/* Filter chips */}
-            <div className="flex items-center gap-2 flex-wrap sm:justify-end">
-              {FILTER_TAGS.map(tag => (
-                <button key={tag} onClick={() => setActiveTag(tag)}
-                  className={`font-sans text-xs px-3 py-1.5 rounded-lg border transition-all
-                    ${activeTag === tag
-                      ? 'bg-ss-ink text-white border-ss-ink'
-                      : 'border-ss-border text-ss-dim hover:border-ss-muted hover:text-ss-ink'}`}>
-                  {tag}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Horizontal carousel */}
-          <div className="scroll-strip flex gap-4 pb-2">
-            {filtered.map((field, i) => (
-              <div key={field.id}
-                className="flex-shrink-0 w-64 animate-fade-in opacity-0"
-                style={{ animationFillMode: 'forwards', animationDelay: `${i * 0.07}s` }}>
-                <div className="group cursor-pointer">
-                  <div className="w-full rounded-xl overflow-hidden border border-ss-border mb-3
-                    transition-all duration-300 group-hover:shadow-lg group-hover:-translate-y-0.5">
-                    <img src={field.img} alt={field.title} className="w-full aspect-[4/3] object-cover"/>
-                  </div>
-                  <div className="flex items-start justify-between">
-                    <div>
-                      <h3 className="font-sans font-semibold text-sm text-ss-ink group-hover:text-ss-accent transition-colors">{field.title}</h3>
-                      <p className="text-xs text-ss-ghost mt-0.5">by {field.creator}</p>
-                    </div>
-                    <span className="font-sans text-2xs font-medium text-ss-ghost border border-ss-border px-2 py-1 rounded-md ml-2 flex-shrink-0">{field.category}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -409,9 +280,9 @@ export default function Landing({ setPage, openField }) {
                 Everything you need.<br/>Nothing you don't.
               </h2>
               <p className="text-sm text-ss-dim leading-relaxed mb-8">
-                Staticfield is a minimal workspace<br/>
-                for collecting, connecting<br/>
-                and evolving your ideas.
+                Staticfield is a quiet studio space<br/>
+                for thoughts, references<br/>
+                and unfinished sonic ideas.
               </p>
               <div className="flex items-center gap-3">
                 <button onClick={() => setPage('fields')}

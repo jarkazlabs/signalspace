@@ -889,6 +889,7 @@ export default function BoardCanvas({ boardId, cards, connections, sections, add
   const [connectingFrom, setConnectingFrom] = useState(null)
   const [connectLine,    setConnectLine]    = useState(null)
   const [signalMenuAnchor, setSignalMenuAnchor] = useState(null)
+  const [capturePadPosition, setCapturePadPosition] = useState(null)
   const [activeSection,  setActiveSection]  = useState(null)
   const [focusedSignalId, setFocusedSignalId] = useState(null)
   const [editingSignalId, setEditingSignalId] = useState(null)
@@ -1030,8 +1031,28 @@ export default function BoardCanvas({ boardId, cards, connections, sections, add
     setSignalMenuAnchor(null)
   }
 
+  function openCapturePad() {
+    const el = canvasRef.current
+    if (!el) return
+    const position = {
+      x: Math.max(0, el.scrollLeft + el.clientWidth / 2 - 150),
+      y: Math.max(0, el.scrollTop + el.clientHeight / 2 - 150),
+    }
+    setCapturePadPosition(position)
+    setSignalMenuAnchor(anchor => anchor === 'canvas' ? null : 'canvas')
+    setActiveSection(null)
+    setFocusedSignalId(null)
+    setEditingSignalId(null)
+  }
+
   function patchSignal(type, data) {
-    const id = addCard(boardId, type, data)
+    const position = signalMenuAnchor === 'canvas' && capturePadPosition
+      ? capturePadPosition
+      : undefined
+    const id = addCard(boardId, type, {
+      ...data,
+      ...(position ? { position } : {}),
+    })
     setFocusedSignalId(id)
     setEditingSignalId(id)
     setSignalMenuAnchor(null)
@@ -1105,11 +1126,10 @@ export default function BoardCanvas({ boardId, cards, connections, sections, add
       {/* Toolbar */}
       <div className="bg-white border-b border-ss-border px-5 py-2.5 flex items-center gap-2.5 flex-shrink-0">
         <div className="relative">
-          <button onClick={() => setSignalMenuAnchor(anchor => anchor === 'toolbar' ? null : 'toolbar')}
+          <button onClick={openCapturePad}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-ss-ink text-white text-xs font-semibold rounded-lg hover:bg-ss-dim transition-colors">
             Add Signal
           </button>
-          {signalMenuAnchor === 'toolbar' && <SignalMenu onSelect={patchSignal} />}
         </div>
         <button onClick={handleAddSection}
           className="flex items-center gap-1.5 px-3 py-1.5 border border-ss-border text-ss-dim text-xs font-semibold rounded-lg hover:border-ss-muted hover:text-ss-ink transition-colors">
@@ -1168,6 +1188,15 @@ export default function BoardCanvas({ boardId, cards, connections, sections, add
         }}
       >
         <div className="relative" style={{ width: canvasSize.width, height: canvasSize.height }}>
+          {signalMenuAnchor === 'canvas' && capturePadPosition && (
+            <SignalMenu
+              onSelect={patchSignal}
+              style={{
+                left: capturePadPosition.x,
+                top: capturePadPosition.y,
+              }}
+            />
+          )}
 
           {/* Sections */}
           {sections.map(section => (
